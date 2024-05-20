@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            height: 100vh;
+            background-image: linear-gradient(to bottom, rgb(60, 146, 149), rgb(54, 110, 200), rgb(26, 28, 120), rgb(138, 43, 226));
+        }
+        #container{
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            height: 450px;
+            border-radius: 10px;
+            background:darkblue;
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 450px;
+        }
+        button{
+            background-image: linear-gradient(to bottom, rgb(60, 146, 149), rgb(54, 110, 200), rgb(26, 28, 120), rgb(138, 43, 226));
+            border: none;
+            padding: 10px;
+            color: darkblue;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <main id="container">
+        <div id="calculator">
+            <h2>
+                Calculadora de Juros Compostos
+            </h2>
+
+            <div id="input_box">
+                <div class="input-field">
+                    
+                    <label for="value">Valor Inicial (capital):</label>
+                    <input type="number" id="value">
+                </div>
+                <br>
+                <div class="input-field">
+                    <label for="fee">Taxa de Juros a.m:</label>
+                    <input type="number" id="fee">
+                </div>
+                <br>
+                <div class="input-field">
+                    <label for="time">Tempo de Rendimento a.m:</label>
+                    <input type="number" id="time">
+                </div>
+            </div>
+
+            <div id="result">
+                <h4>Resultado:</h4>
+                <span id="total">
+                    R$ 0,00
+                </span>
+            </div>
+            <br>
+            <button id="calculate">
+                Calcular
+            </button>
+</body>
+    <script>
+          document.getElementById('calculate').addEventListener('click', function(){
+    const value = document.getElementById('value').value;
+    const fee = (document.getElementById('fee').value) / 100;
+    const time = document.getElementById('time').value;
+
+    const total = value * (1 + fee)**time;
+
+    document.getElementById('total').innerHTML = ("R$ " + total.toFixed(2).replace('.', ','));
+});
+    </script>
+</html>
